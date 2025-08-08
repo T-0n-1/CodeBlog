@@ -4,4 +4,33 @@
     <h2>{% block title %} {{ post['title'] }} {% endblock %}</h2>
     <span class="badge badge-primary">{{ post['created'] }}</span>
     <p>{{ post['content'] }}</p>
+    <hr>
+    <h4>Comments</h4>
+    <div class="mb-4">
+      {% if comments %}
+        {% for comment in comments %}
+          <div class="card mb-2">
+            <div class="card-body">
+              <p class="card-text">{{ comment['content'] }}</p>
+              <footer class="blockquote-footer">
+                {{ comment['username'] or 'Anonymous' }} on {{ comment['created'] }}
+              </footer>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No comments yet.</p>
+      {% endif %}
+    </div>
+    {% if user %}
+    <form method="post" action="{{ url_for('add_comment', post_id=post['id']) }}" class="card card-body mb-4">
+      <div class="form-group">
+        <label for="content">Add a comment</label>
+        <textarea name="content" id="content" class="form-control" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% else %}
+    <p><a href="{{ url_for('login') }}">Login</a> to add a comment.</p>
+    {% endif %}
 {% endblock %}
