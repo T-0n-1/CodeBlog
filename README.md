@@ -15,7 +15,7 @@ This is a simple Flask blog application with CRUD functionality for posts, and s
 
    ```bash
    git clone <repo-url>
-   cd flask_blog
+   cd CodeBlog
    ```
 
 2. (Optional) Create and activate a virtual environment:
@@ -56,18 +56,36 @@ The app will be available at http://127.0.0.1:5000/
 1. Build the Docker image:
 
    ```bash
-   docker build -t flask_blog .
+   docker build -t codeblog .
    ```
 
 2. Run the Docker container:
 
    ```bash
-   docker run -p 5000:5000 flask_blog
+   docker run -p 5000:5000 codeblog
    ```
 
 The app will be available at http://127.0.0.1:5000/
 
 ---
+
+### Run tests in docker
+
+Create docker network:
+
+```
+docker network create codeblog_network
+```
+
+Build both containers (tests and the application)
+
+Run both containers in the same network.
+
+```bash
+docker run -p 5000:5000 --network codeblog_network --name codeblog_app codeblog
+...
+docker run --network codeblog_network codeblog_tests
+```
 
 ## Project Structure
 

@@ -1,0 +1,24 @@
+services:
+  codeblog:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codeblog_app
+    ports:
+      - "5000:5000"
+    networks:
+      - codeblog_network
+
+  tests:
+    build:
+      context: robot_tests/.
+      dockerfile: Dockerfile
+    container_name: codeblog_tests
+    depends_on:
+      - codeblog
+    networks:
+      - codeblog_network
+
+networks:
+  codeblog_network:
+    driver: bridge
