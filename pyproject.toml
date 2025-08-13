@@ -1,0 +1,84 @@
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+fix = true
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 20
+
+[tool.robocop]
+[tool.robocop.format]
+diff = true
+color = true
+select = [
+    "AlignKeywordsSection", 
+    "AlignTemplatedTestCases",
+    "AlignTestCasesSection",
+    "AlignVariablesSection",
+    "DiscardEmptySections",
+    "GenerateDocumentation",
+    "IndentNestedKeywords",
+    "MergeAndOrderSections",
+    "NormalizeAssignments",
+    "NormalizeComments",
+    "NormalizeNewLines",
+    "OrderSettings",
+    "OrderSettingsSection",
+    "RemoveEmptySettings",
+    "RenameKeywords",
+    "RenameTestCases",
+    "SplitTooLongLine"
+]
+configure = [
+    "Align*.alignment_type=auto",
+    "Align*.align_comments=true",
+    "GenerateDocumentation.overwrite=false",
+    "IndentNestedKeywords.indent_and=split_and_indent",
+    "NormalizeNewLines.section_lines=2",
+    "RenameTestCases.capitalize_each_word=true",
+]
+reruns = 3
+
+[tool.robocop.lint]
+select = [
+    "AlignKeywordsSection", 
+    "AlignTemplatedTestCases",
+    "AlignTestCasesSection",
+    "AlignVariablesSection",
+    "DiscardEmptySections",
+    "GenerateDocumentation",
+    "IndentNestedKeywords",
+    "MergeAndOrderSections",
+    "NormalizeAssignments",
+    "NormalizeComments",
+    "NormalizeNewLines",
+    "OrderSettings",
+    "OrderSettingsSection",
+    "RemoveEmptySettings",
+    "RenameKeywords",
+    "RenameTestCases",
+    "SplitTooLongLine"
+]
+configure = [
+    "Align*.alignment_type=auto",
+    "Align*.align_comments=true",
+    "GenerateDocumentation.overwrite=false",
+    "IndentNestedKeywords.indent_and=split_and_indent",
+    "NormalizeNewLines.section_lines=2",
+    "RenameTestCases.capitalize_each_word=true",
+]
+
+[mypy]
+python_version = 3.13
+ignore_missing_imports = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+strict = true
+follow_untyped_imports = true

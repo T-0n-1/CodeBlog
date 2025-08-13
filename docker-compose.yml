@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: codeblog_app
     ports:
-      - "5000:5000"
+      - "5100:5000"
     networks:
       - codeblog_network
 

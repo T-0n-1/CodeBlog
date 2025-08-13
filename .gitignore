@@ -1,5 +1,7 @@
-env
 __pycache__/
-database.db
 venv/
 .vscode/
+results/
+env
+database.db
+.DS_Store
